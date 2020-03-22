@@ -33,9 +33,86 @@ KV = '''
 		            root.screen_manager.current = "Settings"
 <Clock_Widget>:
 	padding: 10
-	time_rn: "Hello"
-	MDLabel:
-		text: root.time_rn
+	h1: ""
+	h2: ""
+	m1: ""
+	m2: ""
+	s1: ""
+	s2: ""
+	GridLayout:
+		cols: 6
+		MDLabel:
+			text: "H"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: "H"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: "M"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: "M"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: "S"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: "S"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H2"
+		MDLabel:
+			text: root.h1
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.h2
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m1
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m2
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s1
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s2
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
 Screen:
 	MDToolbar:
 		id: toolbar
@@ -48,12 +125,16 @@ Screen:
 		ScreenManager:
 			id: screen_manager
 			Screen:
+				name: "Clock"
+				Clock_Widget:
+			Screen:
 				name: "Settings"
 				MDLabel:
 					text: "Settings"
-			Screen:
-				name: "Clock"
-				Clock_Widget:
+					halign: "center"
+					valign: "middle"
+					theme_text_color: "Primary"
+					font_style: "H1"
 		MDNavigationDrawer:
 			id: nav_drawer
 			
@@ -66,12 +147,18 @@ class ContentNavigationDrawer(BoxLayout):
 	screen_manager = ObjectProperty()
 	nav_drawer = ObjectProperty()
 class Clock_Widget(BoxLayout):
-	time_rn = StringProperty(time.asctime())
+	time_rn = StringProperty(time.asctime()[11:19])
 	def __init__(self, **kwargs):
 		super(Clock_Widget, self).__init__(**kwargs)
-		Clock.schedule_interval(self.update, 1.0 / 60.0)
+		Clock.schedule_interval(self.update, 1.0 / 180.0)
 	def update(self, dt):
-		self.time_rn = time.asctime()
+		self.time = time.asctime()
+		self.h1 = f'{str(bin(int(self.time[11]))[2::]):>04}'
+		self.h2 = f'{str(bin(int(self.time[12]))[2::]):>04}'
+		self.m1 = f'{str(bin(int(self.time[14]))[2::]):>04}'
+		self.m2 = f'{str(bin(int(self.time[15]))[2::]):>04}'
+		self.s1 = f'{str(bin(int(self.time[17]))[2::]):>04}'
+		self.s2 = f'{str(bin(int(self.time[18]))[2::]):>04}'
 class ClockApp(MDApp):
     def build(self):
         app = MDApp.get_running_app()
