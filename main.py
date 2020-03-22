@@ -32,15 +32,45 @@ KV = '''
 		            root.nav_drawer.set_state("close")
 		            root.screen_manager.current = "Settings"
 <Clock_Widget>:
-	padding: 10
-	h1: ""
-	h2: ""
-	m1: ""
-	m2: ""
-	s1: ""
-	s2: ""
+	padding: 5
+	h00: ""
+	h01: ""
+	h02: ""
+	h03: ""
+	h10: ""
+	h11: ""
+	h12: ""
+	h13: ""
+	m00: ""
+	m01: ""
+	m02: ""
+	m03: ""
+	m10: ""
+	m11: ""
+	m12: ""
+	m13: ""
+	s00: ""
+	s01: ""
+	s02: ""
+	s03: ""
+	s10: ""
+	s11: ""
+	s12: ""
+	s13: ""
 	GridLayout:
+		padding: 40
 		cols: 6
+		
+		
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		
+		
+		
 		MDLabel:
 			text: "H"
 			halign: "center"
@@ -77,38 +107,160 @@ KV = '''
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H2"
+		
+		
+		
 		MDLabel:
-			text: root.h1
+			text: root.h00
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H4"
 		MDLabel:
-			text: root.h2
+			text: root.h10
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H4"
 		MDLabel:
-			text: root.m1
+			text: root.m00
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H4"
 		MDLabel:
-			text: root.m2
+			text: root.m10
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H4"
 		MDLabel:
-			text: root.s1
+			text: root.s00
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
 			font_style: "H4"
 		MDLabel:
-			text: root.s2
+			text: root.s10
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		
+		
+		
+		MDLabel:
+			text: root.h01
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.h11
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m01
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m11
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s01
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s11
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		
+		
+		
+		
+		MDLabel:
+			text: root.h02
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.h12
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m02
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m12
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s02
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s12
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+			
+		
+		
+		
+		MDLabel:
+			text: root.h03
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.h13
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m03
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.m13
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s03
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Primary"
+			font_style: "H4"
+		MDLabel:
+			text: root.s13
 			halign: "center"
 			valign: "middle"
 			theme_text_color: "Primary"
@@ -153,12 +305,36 @@ class Clock_Widget(BoxLayout):
 		Clock.schedule_interval(self.update, 1.0 / 180.0)
 	def update(self, dt):
 		self.time = time.asctime()
-		self.h1 = f'{str(bin(int(self.time[11]))[2::]):>04}'
-		self.h2 = f'{str(bin(int(self.time[12]))[2::]):>04}'
-		self.m1 = f'{str(bin(int(self.time[14]))[2::]):>04}'
-		self.m2 = f'{str(bin(int(self.time[15]))[2::]):>04}'
-		self.s1 = f'{str(bin(int(self.time[17]))[2::]):>04}'
-		self.s2 = f'{str(bin(int(self.time[18]))[2::]):>04}'
+		self.h0 = f'{str(bin(int(self.time[11]))[2::]):>04}'
+		self.h00 = self.h0[0]
+		self.h01 = self.h0[1]
+		self.h02 = self.h0[2]
+		self.h03 = self.h0[3]
+		self.h1 = f'{str(bin(int(self.time[12]))[2::]):>04}'
+		self.h10 = self.h1[0]
+		self.h11 = self.h1[1]
+		self.h12 = self.h1[2]
+		self.h13 = self.h1[3]
+		self.m0 = f'{str(bin(int(self.time[14]))[2::]):>04}'
+		self.m00 = self.m0[0]
+		self.m01 = self.m0[1]
+		self.m02 = self.m0[2]
+		self.m03 = self.m0[3]
+		self.m1 = f'{str(bin(int(self.time[15]))[2::]):>04}'
+		self.m10 = self.m1[0]
+		self.m11 = self.m1[1]
+		self.m12 = self.m1[2]
+		self.m13 = self.m1[3]
+		self.s0 = f'{str(bin(int(self.time[17]))[2::]):>04}'
+		self.s00 = self.s0[0]
+		self.s01 = self.s0[1]
+		self.s02 = self.s0[2]
+		self.s03 = self.s0[3]
+		self.s1 = f'{str(bin(int(self.time[18]))[2::]):>04}'
+		self.s10 = self.s1[0]
+		self.s11 = self.s1[1]
+		self.s12 = self.s1[2]
+		self.s13 = self.s1[3]
 class ClockApp(MDApp):
     def build(self):
         app = MDApp.get_running_app()
