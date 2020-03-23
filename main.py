@@ -22,15 +22,26 @@ KV = '''
 	ScrollView:
 		MDList:
 		    OneLineListItem:
-		        text: "Binary Clock"
+		        text: "Tick"
 		        on_press:
 		            root.nav_drawer.set_state("close")
 		            root.screen_manager.current = "Clock"
 		    OneLineListItem:
+		        text: "Change Clock Style"
+		        on_press:
+		            root.nav_drawer.set_state("close")
+		            root.screen_manager.current = "AClock" if root.screen_manager.current=="Clock" else "Clock"
+		    TwoLineListItem:
 		        text: "Settings"
+		        secondary_text: "Light Mode"
 		        on_press:
 		            root.nav_drawer.set_state("close")
 		            root.screen_manager.current = "Settings"
+		        MDSwitch:
+					pos_hint: {'center_x': .75, 'center_y': .5}
+					active: False
+					on_active: root.nav_drawer.set_state("close")
+					on_active: app.theme_change(self, self.active)
 		    
 <Clock_Widget>:
 	padding: 5
@@ -58,8 +69,20 @@ KV = '''
 	s11: ""
 	s12: ""
 	s13: ""
+	h0: ""
+	h1: ""
+	m0: ""
+	m1: ""
+	s0: ""
+	s1: ""
+	hh0: ""
+	hh1: ""
+	mm0: ""
+	mm1: ""
+	ss0: ""
+	ss1: ""
 	GridLayout:
-		padding: 40
+		padding: 20
 		cols: 6
 		
 		
@@ -76,38 +99,38 @@ KV = '''
 			text: "H"
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
+			theme_text_color: "Secondary"
+			font_style: "H3"
 		MDLabel:
-			text: "H"
+			text: "h"
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
-		MDLabel:
-			text: "M"
-			halign: "center"
-			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
+			theme_text_color: "Secondary"
+			font_style: "H3"
 		MDLabel:
 			text: "M"
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
+			theme_text_color: "Secondary"
+			font_style: "H3"
+		MDLabel:
+			text: "m"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H3"
 		MDLabel:
 			text: "S"
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
+			theme_text_color: "Secondary"
+			font_style: "H3"
 		MDLabel:
-			text: "S"
+			text: "s"
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Primary"
-			font_style: "H2"
+			theme_text_color: "Secondary"
+			font_style: "H3"
 		
 		
 		
@@ -116,43 +139,43 @@ KV = '''
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.h10
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m00
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m10
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s00
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s10
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		
 		
 		
@@ -161,43 +184,43 @@ KV = '''
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.h11
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m01
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m11
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s01
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s11
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		
 		
 		
@@ -207,43 +230,43 @@ KV = '''
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.h12
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m02
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m12
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s02
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s12
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 			
 		
 		
@@ -253,49 +276,198 @@ KV = '''
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.h13
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m03
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.m13
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s03
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
 		MDLabel:
 			text: root.s13
 			markup: True
 			halign: "center"
 			valign: "middle"
-			theme_text_color: "Secondary"
-			font_style: "H4"
+			theme_text_color: "Hint"
+			font_style: "H3"
+			
+				
+		
+		
+		
+		MDLabel:
+			text: root.hh0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.hh1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"	
+				
+		
+		
+		
+		MDLabel:
+			text: root.h0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+		MDLabel:
+			text: root.h1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+		MDLabel:
+			text: root.m0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+		MDLabel:
+			text: root.m1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+		MDLabel:
+			text: root.s0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+		MDLabel:
+			text: root.s1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H5"
+
+<Analog_widget>:
+	padding: 20
+	hh0: ""
+	hh1: ""
+	mm0: ""
+	mm1: ""
+	ss0: ""
+	ss1: ""
+	GridLayout:
+		cols: 15
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+			text: root.hh0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.hh1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: ":"
+			markup: True
+			theme_text_color: "Hint"
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: ":"
+			markup: True
+			theme_text_color: "Hint"
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+		MDLabel:
+		MDLabel:	
+
 Screen:
 	MDToolbar:
 		id: toolbar
 		pos_hint: {"top": 1}
 		elevation: 8
-		title: "Binary Clock"
+		title: "Tick"
 		left_action_items: [["clock", lambda x: nav_drawer.set_state("open")]]
 	NavigationLayout:
 		x: toolbar.height
@@ -304,6 +476,9 @@ Screen:
 			Screen:
 				name: "Clock"
 				Clock_Widget:
+			Screen:
+				name: "AClock"
+				Analog_Widget:
 			Screen:
 				name: "Settings"
 				GridLayout:
@@ -319,7 +494,7 @@ Screen:
 					GridLayout:
 						cols: 2
 						MDLabel:
-							text: "Dark Mode"
+							text: "Light Mode"
 							halign: "center"
 							valign: "middle"
 							theme_text_color: "Primary"
@@ -341,6 +516,20 @@ Screen:
 class ContentNavigationDrawer(BoxLayout):
 	screen_manager = ObjectProperty()
 	nav_drawer = ObjectProperty()
+	
+class Analog_Widget(BoxLayout):
+	def __init__(self, **kwargs):
+		super(Analog_Widget, self).__init__(**kwargs)
+		Clock.schedule_interval(self.update, 1.0 / 180.0)
+	def update(self, dt):
+		self.time = time.asctime()
+		self.hh0 = f'[b][color=d32f2f]{self.time[11]}[/color][/b]'
+		self.hh1 = f'[b][color=ff1744]{self.time[12]}[/color][/b]'
+		self.mm0 = f'[b][color=4caf50]{self.time[14]}[/color][/b]'
+		self.mm1 = f'[b][color=7cb342]{self.time[15]}[/color][/b]'
+		self.ss0 = f'[b][color=2962ff]{self.time[17]}[/color][/b]'
+		self.ss1 = f'[b][color=42a5f5]{self.time[18]}[/color][/b]'
+		
 class Clock_Widget(BoxLayout):
 	time_rn = StringProperty(time.asctime()[11:19])
 	def __init__(self, **kwargs):
@@ -348,149 +537,147 @@ class Clock_Widget(BoxLayout):
 		Clock.schedule_interval(self.update, 1.0 / 180.0)
 	def update(self, dt):
 		self.time = time.asctime()
+		self.hh0 = f'[b][color=d32f2f]{self.time[11]}[/color][/b]'
+		self.h0_ = f'{str(bin(int(self.time[11]))[2::]):>04}'
+		self.h0 = f'[b][color=d32f2f]{self.h0_}[/color][/b]'
 		
+		if int(self.h0_[0]):
+			self.h00 = "[b][color=262626]8[/color][/b]"
+		else:
+			self.h00 = "[b][color=262626]0[/color][/b]"
+		if int(self.h0_[1]):
+			self.h01 = "[b][color=262626]4[/color][/b]"
+		else:
+			self.h01 = "[b][color=262626]0[/color][/b]"
+		if int(self.h0_[2]):
+			self.h02 = f'[b][color=d32f2f]2[/color][/b]'
+		else:
+			self.h02 = "[b][color=262626]0[/color][/b]"
+		if int(self.h0_[3]):
+			self.h03 = f'[b][color=d32f2f]1[/color][/b]'
+		else:
+			self.h03 = "[b][color=262626]0[/color][/b]"
+		self.hh1 = f'[b][color=ff1744]{self.time[12]}[/color][/b]'	
+		self.h1_ = f'{str(bin(int(self.time[12]))[2::]):>04}'
+		self.h1 = f'[b][color=ff1744]{self.h1_}[/color][/b]'
 		
-		self.h0 = f'{str(bin(int(self.time[11]))[2::]):>04}'
+		if int(self.h1_[0]):
+			self.h10 = f'[b][color=ff1744]8[/color][/b]'
+		else:
+			self.h10 = "[b][color=262626]0[/color][/b]"
+		if int(self.h1_[1]):
+			self.h11 = f'[b][color=ff1744]4[/color][/b]'
+		else:
+			self.h11 = "[b][color=262626]0[/color][/b]"
+		if int(self.h1_[2]):
+			self.h12 = f'[b][color=ff1744]2[/color][/b]'
+		else:
+			self.h12 = "[b][color=262626]0[/color][/b]"
+		if int(self.h1_[3]):
+			self.h13 = f'[b][color=ff1744]1[/color][/b]'
+		else:
+			self.h13 = "[b][color=262626]0[/color][/b]"
+		self.mm0 = f'[b][color=4caf50]{self.time[14]}[/color][/b]'	
+		self.m0_ = f'{str(bin(int(self.time[14]))[2::]):>04}'
+		self.m0 = f'[b][color=4caf50]{self.m0_}[/color][/b]'
 		
+		if int(self.m0_[0]):
+			self.m00 = "[b][color=262626]8[/color][/b]"
+		else:
+			self.m00 = "[b][color=262626]0[/color][/b]"
+		if int(self.m0_[1]):
+			self.m01 = f'[b][color=4caf50]4[/color][/b]'
+		else:
+			self.m01 = "[b][color=262626]0[/color][/b]"
+		if int(self.m0_[2]):
+			self.m02 = f'[b][color=4caf50]2[/color][/b]'
+		else:
+			self.m02 = "[b][color=262626]0[/color][/b]"
+		if int(self.m0_[3]):
+			self.m03 = f'[b][color=4caf50]1[/color][/b]'
+		else:
+			self.m03 = "[b][color=262626]0[/color][/b]"
+		self.mm1 = f'[b][color=7cb342]{self.time[15]}[/color][/b]'	
+		self.m1_ = f'{str(bin(int(self.time[15]))[2::]):>04}'
+		self.m1 = f'[b][color=7cb342]{self.m1_}[/color][/b]'
 		
-		if int(self.h0[0]):
-			self.h00 = f' '
+		if int(self.m1_[0]):
+			self.m10 = f'[b][color=7cb342]8[/color][/b]'
 		else:
-			self.h00 = " "
-		if int(self.h0[1]):
-			self.h01 = f' '
+			self.m10 = "[b][color=262626]0[/color][/b]"
+		if int(self.m1_[1]):
+			self.m11 = f'[b][color=7cb342]4[/color][/b]'
 		else:
-			self.h01 = " "
-		if int(self.h0[2]):
-			self.h02 = f'[color=ffbf00]1[/color]'
+			self.m11 = "[b][color=262626]0[/color][/b]"
+		if int(self.m1_[2]):
+			self.m12 = f'[b][color=7cb342]2[/color][/b]'
 		else:
-			self.h02 = "X"
-		if int(self.h0[3]):
-			self.h03 = f'[color=ffbf00]1[/color]'
+			self.m12 = "[b][color=262626]0[/color][/b]"
+		if int(self.m1_[3]):
+			self.m13 = f'[b][color=7cb342]1[/color][/b]'
 		else:
-			self.h03 = "X"
-			
-			
-		self.h1 = f'{str(bin(int(self.time[12]))[2::]):>04}'
+			self.m13 = "[b][color=262626]0[/color][/b]"
+		self.ss0 = f'[b][color=2962ff]{self.time[17]}[/color][/b]'	
+		self.s0_ = f'{str(bin(int(self.time[17]))[2::]):>04}'
+		self.s0 = f'[b][color=2962ff]{self.s0_}[/color][/b]'
 		
+		if int(self.s0_[0]):
+			self.s00 = "[b][color=262626]8[/color][/b]"
+		else:
+			self.s00 = "[b][color=262626]0[/color][/b]"
+		if int(self.s0_[1]):
+			self.s01 = f'[b][color=2962ff]4[/color][/b]'
+		else:
+			self.s01 = "[b][color=262626]0[/color][/b]"
+		if int(self.s0_[2]):
+			self.s02 = f'[b][color=2962ff]2[/color][/b]'
+		else:
+			self.s02 = "[b][color=262626]0[/color][/b]"
+		if int(self.s0_[3]):
+			self.s03 = f'[b][color=2962ff]1[/color][/b]'
+		else:
+			self.s03 = "[b][color=262626]0[/color][/b]"
+		self.ss1 = f'[b][color=42a5f5]{self.time[18]}[/color][/b]'	
+		self.s1_ = f'{str(bin(int(self.time[18]))[2::]):>04}'
+		self.s1 = f'[b][color=42a5f5]{self.s1_}[/color][/b]'
 		
-		if int(self.h1[0]):
-			self.h10 = f'[color=ffbf00]1[/color]'
+		if int(self.s1_[0]):
+			self.s10 = f'[b][color=42a5f5]8[/color][/b]'
 		else:
-			self.h10 = "X"
-		if int(self.h1[1]):
-			self.h11 = f'[color=ffbf00]1[/color]'
+			self.s10 = "[b][color=262626]0[/color][/b]"
+		if int(self.s1_[1]):
+			self.s11 = f'[b][color=42a5f5]4[/color][/b]'
 		else:
-			self.h11 = "X"
-		if int(self.h1[2]):
-			self.h12 = f'[color=ffbf00]1[/color]'
+			self.s11 = "[b][color=262626]0[/color][/b]"
+		if int(self.s1_[2]):
+			self.s12 = f'[b][color=42a5f5]2[/color][/b]'
 		else:
-			self.h12 = "X"
-		if int(self.h1[3]):
-			self.h13 = f'[color=ffbf00]1[/color]'
+			self.s12 = "[b][color=262626]0[/color][/b]"
+		if int(self.s1_[3]):
+			self.s13 = f'[b][color=42a5f5]1[/color][/b]'
 		else:
-			self.h13 = "X"
-			
-			
-		self.m0 = f'{str(bin(int(self.time[14]))[2::]):>04}'
-		
-		
-		if int(self.m0[0]):
-			self.m00 = f' '
-		else:
-			self.m00 = " "
-		if int(self.m0[1]):
-			self.m01 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m01 = "X"
-		if int(self.m0[2]):
-			self.m02 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m02 = "X"
-		if int(self.m0[3]):
-			self.m03 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m03 = "X"
-			
-			
-		self.m1 = f'{str(bin(int(self.time[15]))[2::]):>04}'
-		
-		
-		if int(self.m1[0]):
-			self.m10 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m10 = "X"
-		if int(self.m1[1]):
-			self.m11 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m11 = "X"
-		if int(self.m1[2]):
-			self.m12 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m12 = "X"
-		if int(self.m1[3]):
-			self.m13 = f'[color=ffbf00]1[/color]'
-		else:
-			self.m13 = "X"
-			
-			
-		self.s0 = f'{str(bin(int(self.time[17]))[2::]):>04}'
-		
-		
-		if int(self.s0[0]):
-			self.s00 = f' '
-		else:
-			self.s00 = " "
-		if int(self.s0[1]):
-			self.s01 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s01 = "X"
-		if int(self.s0[2]):
-			self.s02 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s02 = "X"
-		if int(self.s0[3]):
-			self.s03 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s03 = "X"
-			
-			
-		self.s1 = f'{str(bin(int(self.time[18]))[2::]):>04}'
-		
-		
-		if int(self.s1[0]):
-			self.s10 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s10 = "X"
-		if int(self.s1[1]):
-			self.s11 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s11 = "X"
-		if int(self.s1[2]):
-			self.s12 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s12 = "X"
-		if int(self.s1[3]):
-			self.s13 = f'[color=ffbf00]1[/color]'
-		else:
-			self.s13 = "X"
+			self.s13 = "[b][color=262626]0[/color][/b]"
 			
 			
 class ClockApp(MDApp):
     def build(self):
         app = MDApp.get_running_app()
-        app.theme_cls.primary_palette = "Amber"
-        app.theme_cls.accent_palette = "Amber"
-        app.theme_cls.theme_style = "Light"
+        app.theme_cls.primary_palette = "Gray"
+        app.theme_cls.accent_palette = "Gray"
+        app.theme_cls.theme_style = "Dark"
         Window.borderless = False
-        self.title = "Binary Clock"
-        Config.set('kivy', 'window_title', 'Binary Clock')
+        self.title = "Tick"
+        Config.set('kivy', 'window_title', 'Tick')
         return Builder.load_string(KV)
     def theme_change(self, instance, value):
     	if value:
-    		clock_app.theme_cls.theme_style = "Dark"
-    	else:
     		clock_app.theme_cls.theme_style = "Light"
+    		clock_app.theme_cls.primary_palette = "Blue"
+    		clock_app.theme_cls.accent_palette = "Blue"
+    	else:
+    		clock_app.theme_cls.theme_style = "Dark"
+    		clock_app.theme_cls.primary_palette = "Gray"
+    		clock_app.theme_cls.accent_palette = "Gray"
 
 
 if __name__ == "__main__":
