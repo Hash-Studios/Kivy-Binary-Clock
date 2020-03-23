@@ -1,5 +1,7 @@
 import kivy
 import time
+from PIL import Image, ImageDraw
+
 from kivy.lang import Builder
 from kivy.core.window import Window
 from kivy.config import Config
@@ -14,10 +16,17 @@ from kivymd.theming import ThemableBehavior
 
 #kivy.require("2.0.0")
 
+def interpolate(f_co, t_co, interval):
+    det_co =[(t - f) / interval for f , t in zip(f_co, t_co)]
+    for i in range(interval):
+        yield [round(f + det * i) for f, det in zip(f_co, det_co)]
+
 KV = '''
-#:import time time
-#:import Clock kivy.clock.Clock
-#:import Label kivy.uix.label.Label
+<BG>:
+	orientation: "vertical"
+	Image:
+		id: bg
+		source: 'bg.png'
 <ContentNavigationDrawer>:
 	ScrollView:
 		MDList:
@@ -291,6 +300,8 @@ KV = '''
 			theme_text_color: "Secondary"
 			font_style: "H4"
 Screen:
+	id: main_screen
+	BG:
 	MDToolbar:
 		id: toolbar
 		pos_hint: {"top": 1}
@@ -362,11 +373,11 @@ class Clock_Widget(BoxLayout):
 		else:
 			self.h01 = " "
 		if int(self.h0[2]):
-			self.h02 = f'[color=ffbf00]1[/color]'
+			self.h02 = f'[color=0000ff]1[/color]'
 		else:
 			self.h02 = "X"
 		if int(self.h0[3]):
-			self.h03 = f'[color=ffbf00]1[/color]'
+			self.h03 = f'[color=0000ff]1[/color]'
 		else:
 			self.h03 = "X"
 			
@@ -375,19 +386,19 @@ class Clock_Widget(BoxLayout):
 		
 		
 		if int(self.h1[0]):
-			self.h10 = f'[color=ffbf00]1[/color]'
+			self.h10 = f'[color=0000ff]1[/color]'
 		else:
 			self.h10 = "X"
 		if int(self.h1[1]):
-			self.h11 = f'[color=ffbf00]1[/color]'
+			self.h11 = f'[color=0000ff]1[/color]'
 		else:
 			self.h11 = "X"
 		if int(self.h1[2]):
-			self.h12 = f'[color=ffbf00]1[/color]'
+			self.h12 = f'[color=0000ff]1[/color]'
 		else:
 			self.h12 = "X"
 		if int(self.h1[3]):
-			self.h13 = f'[color=ffbf00]1[/color]'
+			self.h13 = f'[color=0000ff]1[/color]'
 		else:
 			self.h13 = "X"
 			
@@ -400,15 +411,15 @@ class Clock_Widget(BoxLayout):
 		else:
 			self.m00 = " "
 		if int(self.m0[1]):
-			self.m01 = f'[color=ffbf00]1[/color]'
+			self.m01 = f'[color=0000ff]1[/color]'
 		else:
 			self.m01 = "X"
 		if int(self.m0[2]):
-			self.m02 = f'[color=ffbf00]1[/color]'
+			self.m02 = f'[color=0000ff]1[/color]'
 		else:
 			self.m02 = "X"
 		if int(self.m0[3]):
-			self.m03 = f'[color=ffbf00]1[/color]'
+			self.m03 = f'[color=0000ff]1[/color]'
 		else:
 			self.m03 = "X"
 			
@@ -417,19 +428,19 @@ class Clock_Widget(BoxLayout):
 		
 		
 		if int(self.m1[0]):
-			self.m10 = f'[color=ffbf00]1[/color]'
+			self.m10 = f'[color=0000ff]1[/color]'
 		else:
 			self.m10 = "X"
 		if int(self.m1[1]):
-			self.m11 = f'[color=ffbf00]1[/color]'
+			self.m11 = f'[color=0000ff]1[/color]'
 		else:
 			self.m11 = "X"
 		if int(self.m1[2]):
-			self.m12 = f'[color=ffbf00]1[/color]'
+			self.m12 = f'[color=0000ff]1[/color]'
 		else:
 			self.m12 = "X"
 		if int(self.m1[3]):
-			self.m13 = f'[color=ffbf00]1[/color]'
+			self.m13 = f'[color=0000ff]1[/color]'
 		else:
 			self.m13 = "X"
 			
@@ -442,15 +453,15 @@ class Clock_Widget(BoxLayout):
 		else:
 			self.s00 = " "
 		if int(self.s0[1]):
-			self.s01 = f'[color=ffbf00]1[/color]'
+			self.s01 = f'[color=0000ff]1[/color]'
 		else:
 			self.s01 = "X"
 		if int(self.s0[2]):
-			self.s02 = f'[color=ffbf00]1[/color]'
+			self.s02 = f'[color=0000ff]1[/color]'
 		else:
 			self.s02 = "X"
 		if int(self.s0[3]):
-			self.s03 = f'[color=ffbf00]1[/color]'
+			self.s03 = f'[color=0000ff]1[/color]'
 		else:
 			self.s03 = "X"
 			
@@ -459,28 +470,51 @@ class Clock_Widget(BoxLayout):
 		
 		
 		if int(self.s1[0]):
-			self.s10 = f'[color=ffbf00]1[/color]'
+			self.s10 = f'[color=0000ff]1[/color]'
 		else:
 			self.s10 = "X"
 		if int(self.s1[1]):
-			self.s11 = f'[color=ffbf00]1[/color]'
+			self.s11 = f'[color=0000ff]1[/color]'
 		else:
 			self.s11 = "X"
 		if int(self.s1[2]):
-			self.s12 = f'[color=ffbf00]1[/color]'
+			self.s12 = f'[color=0000ff]1[/color]'
 		else:
 			self.s12 = "X"
 		if int(self.s1[3]):
-			self.s13 = f'[color=ffbf00]1[/color]'
+			self.s13 = f'[color=0000ff]1[/color]'
 		else:
 			self.s13 = "X"
 			
-			
+
+class BG(BoxLayout):
+	def __init__(self, **kwargs):
+		super(BG, self).__init__(**kwargs)
+		Clock.schedule_interval(self.photo_change, 0.5)
+	def photo_change(self, dt):
+		window_sizes=Window.size
+		w = window_sizes[0]
+		h = window_sizes[1]
+		gradient = Image.new('RGBA', (w,h), color=0)
+		draw = ImageDraw.Draw(gradient)
+		if clock_app.theme_cls.theme_style == "Light":
+			f_co = (0, 191, 255)
+			t_co = (205, 205, 205)
+		else:
+			f_co = (0, 141, 205)
+			t_co = (50, 50, 50)
+		for i, color in enumerate(interpolate(f_co, t_co, w * 3)):
+			draw.line([(i, 0), (0, i)], tuple(color), width=1)
+		with open('bg.png', 'wb') as f:
+			gradient.save(f)
+		self.ids.bg.source = 'bg.png'
+		self.ids.bg.reload()
+    				
 class ClockApp(MDApp):
     def build(self):
         app = MDApp.get_running_app()
-        app.theme_cls.primary_palette = "Amber"
-        app.theme_cls.accent_palette = "Amber"
+        app.theme_cls.primary_palette = "Blue"
+        app.theme_cls.accent_palette = "Blue"
         app.theme_cls.theme_style = "Light"
         Window.borderless = False
         self.title = "Binary Clock"
