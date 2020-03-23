@@ -503,7 +503,6 @@ Screen:
 		pos_hint: {"top": 1}
 		elevation: 10
 		title: "Tick"
-	    
 		left_action_items: [["clock", lambda x: nav_drawer.set_state("open")]]
 	NavigationLayout:
 		ScreenManager:
@@ -779,6 +778,7 @@ class ClockApp(MDApp):
         app = MDApp.get_running_app()
         app.theme_cls.primary_palette = "Gray"
         app.theme_cls.accent_palette = "Gray"
+        app.theme_cls.primary_hue = "800"
         app.theme_cls.theme_style = "Dark"
         Window.borderless = False
         self.title = "Tick"
@@ -790,10 +790,12 @@ class ClockApp(MDApp):
             clock_app.theme_cls.theme_style = "Light"
             clock_app.theme_cls.primary_palette = "Blue"
             clock_app.theme_cls.accent_palette = "Blue"
+            clock_app.theme_cls.primary_hue = "600"
         else:
             clock_app.theme_cls.theme_style = "Dark"
             clock_app.theme_cls.primary_palette = "Gray"
             clock_app.theme_cls.accent_palette = "Gray"
+            clock_app.theme_cls.primary_hue = "800"
 
 if __name__ == "__main__":
     clock_app = ClockApp()
