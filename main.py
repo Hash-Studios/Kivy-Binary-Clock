@@ -797,6 +797,7 @@ class ClockApp(MDApp):
             clock_app.theme_cls.accent_palette = "Gray"
             clock_app.theme_cls.primary_hue = "800"
 
+
 if __name__ == "__main__":
     clock_app = ClockApp()
     clock_app.run()
