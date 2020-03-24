@@ -1,0 +1,530 @@
+<ContentNavigationDrawer>:
+	orientation: "vertical"
+    padding: "8dp"
+    spacing: "8dp"
+	AnchorLayout:
+        anchor_x: "center"
+        size_hint_y: None
+        height: avatar.height
+
+        Image:
+            id: avatar
+            size_hint: None, None
+            size: "200dp", "200dp"
+            source: "icon.png"
+	ScrollView:
+		MDList:
+		    OneLineAvatarListItem:
+		        text: "Tick"
+		        
+		        on_press:
+		            root.nav_drawer.set_state("close")
+		            root.screen_manager.current = "Clock" if root.screen_manager.current=="Clock" else "AClock" if root.screen_manager.current=="AClock" else "Clock" if root.screen_manager.current=="Settings" else "Clock"
+		        
+		        IconLeftWidget:
+            		icon: "clock"
+            		pos_hint: {'center_x': .25, 'center_y': .5}
+            		on_press:
+				        root.nav_drawer.set_state("close")
+				        root.screen_manager.current = "Clock" if root.screen_manager.current=="Clock" else "AClock" if root.screen_manager.current=="AClock" else "Clock" if root.screen_manager.current=="Settings" else "Clock"
+		    OneLineAvatarListItem:
+		        text: "Change Clock Style"
+		        on_press:
+		            root.nav_drawer.set_state("close")
+		            root.screen_manager.current = "AClock" if root.screen_manager.current=="Clock" else "Settings" if root.screen_manager.current=="Settings" else "Clock"
+		            
+		        IconLeftWidget:
+            		icon: "clock-fast"
+            		on_press:
+				        root.nav_drawer.set_state("close")
+				        root.screen_manager.current = "AClock" if root.screen_manager.current=="Clock" else "Settings" if root.screen_manager.current=="Settings" else "Clock"
+            		pos_hint: {'center_x': .25, 'center_y': .5}
+		    TwoLineAvatarListItem:
+		        text: "Settings"
+		        secondary_text: "Light Mode"
+		        on_press:
+		            root.nav_drawer.set_state("close")
+		            root.screen_manager.current = "Settings"
+		        IconLeftWidget:
+            		icon: "settings"
+            		pos_hint: {'center_x': .25, 'center_y': .5}
+            		on_press:
+				        root.nav_drawer.set_state("close")
+				        root.screen_manager.current = "Settings"
+		        MDSwitch:
+					pos_hint: {'center_x': .75, 'center_y': .5}
+					active: False
+					on_active: root.nav_drawer.set_state("close")
+					on_active: app.theme_change(self, self.active)
+		    
+<Clock_Widget>:
+	padding: 5
+	h00: ""
+	h01: ""
+	h02: ""
+	h03: ""
+	h10: ""
+	h11: ""
+	h12: ""
+	h13: ""
+	m00: ""
+	m01: ""
+	m02: ""
+	m03: ""
+	m10: ""
+	m11: ""
+	m12: ""
+	m13: ""
+	s00: ""
+	s01: ""
+	s02: ""
+	s03: ""
+	s10: ""
+	s11: ""
+	s12: ""
+	s13: ""
+	h0: ""
+	h1: ""
+	m0: ""
+	m1: ""
+	s0: ""
+	s1: ""
+	hh0: ""
+	hh1: ""
+	mm0: ""
+	mm1: ""
+	ss0: ""
+	ss1: ""
+	GridLayout:
+		padding: 10
+		cols: 6
+		
+		
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		MDLabel:
+		
+		
+		
+		MDLabel:
+			text: "H"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		MDLabel:
+			text: "h"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		MDLabel:
+			text: "M"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		MDLabel:
+			text: "m"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		MDLabel:
+			text: "S"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		MDLabel:
+			text: "s"
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Secondary"
+			font_style: "H2"
+			font_hinting: None
+		
+		
+		
+		MDLabel:
+			text: root.h00
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.h10
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m00
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m10
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s00
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s10
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		
+		
+		
+		MDLabel:
+			text: root.h01
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.h11
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m01
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m11
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s01
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s11
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		
+		
+		
+		
+		MDLabel:
+			text: root.h02
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.h12
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m02
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m12
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s02
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s12
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+			
+		
+		
+		
+		MDLabel:
+			text: root.h03
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.h13
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m03
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.m13
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s03
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+		MDLabel:
+			text: root.s13
+			markup: True
+			halign: "center"
+			valign: "middle"
+			theme_text_color: "Hint"
+			font_style: "H3"
+			
+				
+		
+		
+		
+		MDLabel:
+			text: root.hh0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.hh1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"	
+				
+		
+		
+		
+		MDLabel:
+			text: root.h0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+		MDLabel:
+			text: root.h1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+		MDLabel:
+			text: root.m0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+		MDLabel:
+			text: root.m1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+		MDLabel:
+			text: root.s0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+		MDLabel:
+			text: root.s1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H6"
+
+<Analog_widget>:
+	padding: 20
+	hh0: ""
+	hh1: ""
+	mm0: ""
+	mm1: ""
+	ss0: ""
+	ss1: ""
+	GridLayout:
+		cols: 13
+		MDLabel:
+		MDLabel:
+		MDLabel:
+			text: root.hh0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.hh1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: ":"
+			markup: True
+			theme_text_color: "Hint"
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.mm1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: ":"
+			markup: True
+			theme_text_color: "Hint"
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss0
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+			text: root.ss1
+			markup: True
+			halign: "center"
+			valign: "middle"
+			font_style: "H2"
+		MDLabel:
+		MDLabel:	
+
+Screen:
+	MDToolbar:
+		id: toolbar
+		pos_hint: {"top": 1}
+		elevation: 10
+		title: "Tick"
+		left_action_items: [["clock", lambda x: nav_drawer.set_state("open")]]
+	NavigationLayout:
+		ScreenManager:
+			id: screen_manager
+			Screen:
+				name: "Clock"
+				Clock_Widget:
+			Screen:
+				name: "AClock"
+				Analog_Widget:
+			Screen:
+				name: "Settings"
+				GridLayout:
+					padding: 5
+					cols: 1
+					MDLabel:
+					MDLabel:
+						text: "Settings"
+						halign: "center"
+						valign: "middle"
+						theme_text_color: "Primary"
+						font_style: "H2"
+					GridLayout:
+						cols: 2
+						MDLabel:
+							text: "Light Mode"
+							halign: "center"
+							valign: "middle"
+							theme_text_color: "Primary"
+							font_style: "Body1"
+						FloatLayout:
+							MDSwitch:
+								pos_hint: {'center_x': .5, 'center_y': .5}
+								active: False
+								on_active: app.theme_change(self, self.active)
+					MDLabel:
+		MDNavigationDrawer:
+			id: nav_drawer
+			
+			ContentNavigationDrawer:
+				screen_manager: screen_manager
+				nav_drawer: nav_drawer
