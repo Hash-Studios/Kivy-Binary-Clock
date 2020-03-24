@@ -1,8 +1,9 @@
 # Kivy Binary Clock App
 This is a cross-platform binary clock app developed completely in python3 along with the kivy framework and kivymd widgets.
 
-## Demo
-
+# Demo
+![Binary Clock Demo](/demo/demo.gif)
+## Screenshot
 ![Binary Clock Dark](/demo/binary_clock_dark.png)
 ![Analog Clock Dark](/demo/analog_clock_dark.png)
 ![Settings Dark](/demo/settings_dark.png)
@@ -12,7 +13,7 @@ This is a cross-platform binary clock app developed completely in python3 along 
 ![Settings](/demo/settings.png)
 ![Nav Drawer](/demo/nav_drawer.png)
 
-## Usage
+# Usage
 
 APK File: `/bin/bclock-1.0-armeabi-v7a-debug.apk`
 
