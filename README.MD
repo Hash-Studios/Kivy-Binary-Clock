@@ -1,5 +1,5 @@
 # Kivy Binary Clock App
-This is a cross-platform app developed completely in python3 along with the kivy framework.
+This is a cross-platform binary clock app developed completely in python3 along with the kivy framework and kivymd widgets.
 
 ## Demo
 
@@ -15,5 +15,8 @@ This is a cross-platform app developed completely in python3 along with the kivy
 ## Usage
 
 APK File: `/bin/bclock-1.0-armeabi-v7a-debug.apk`
+
 Python Code File: `main.py`
+
 Kivy Lang Layout File: `clock.kv`
+
