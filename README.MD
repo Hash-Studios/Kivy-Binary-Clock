@@ -24,7 +24,7 @@ This is a cross-platform binary clock app developed completely in python3 along 
 * Kivy > 2.0.0rc1 `pip3 install kivy==2.0.0rc1`
 * KivyMD > 0.104.0 `pip3 install kivymd==0.104.0`
 
-# Usage
+## Usage
 
 APK File: `/bin/bclock-1.0-armeabi-v7a-debug.apk`
 
